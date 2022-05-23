@@ -71,7 +71,7 @@ class Contact extends React.Component {
                                     <Control.text model =".fristname" id="firstname" name="firstname"
                                     placeholder="First Name"
                                     className="form-control"
-                                    validator={{
+                                    validators={{
                                         required,minLength: minLength(3), maxLength: maxLength(15)
                                     }}
                                     />
@@ -93,7 +93,20 @@ class Contact extends React.Component {
                                     <Control.text model=".lastname" id="lastname" name="lastname"
                                     placeholder="Last Name"
                                     className="form-control"
+                                    validators={{
+                                        required,minLength: minLength(3), maxLength: maxLength(15)
+                                    }}
                                     />
+                                    <Errors 
+                                    className="text-danger"
+                                    model=".lastname"
+                                    show="touched"
+                                    messages={{
+                                        required: 'Required',
+                                        minLength: "Must be greater than 2 characters",
+                                        maxLength: "Must be 15 characters or less"
+                                    }}
+                                    ></Errors>
                                 </Col>
                             </Row>
                             <Row className="form-group">
@@ -102,7 +115,21 @@ class Contact extends React.Component {
                                     <Control.text model =".telnum" id="telnum" name="telnum"
                                     placeholder="Tel. Number"
                                     className="form-control"
+                                    validators={{
+                                        required,minLength: minLength(3), maxLength: maxLength(15), isNumber
+                                    }}
                                     />
+                                    <Errors 
+                                    className="text-danger"
+                                    model=".telnum"
+                                    show="touched"
+                                    messages={{
+                                        required: 'Required',
+                                        minLength: "Must be greater than 2 numbers",
+                                        maxLength: "Must be 15 numbers or less",
+                                        isNumber: 'Must be a number'
+                                    }}
+                                    ></Errors>
                                 </Col>
                             </Row>
                             <Row className="form-group">
@@ -111,7 +138,19 @@ class Contact extends React.Component {
                                     <Control.text model =".email" id="email" name="email"
                                     placeholder="Email"
                                     className="form-control"
+                                    validators={{
+                                        required, validEmail
+                                    }}
                                     />
+                                    <Errors 
+                                    className="text-danger"
+                                    model=".email"
+                                    show="touched"
+                                    messages={{
+                                        required: 'Required',
+                                        validEmail: 'Invalid Email Address'
+                                    }}
+                                    ></Errors>
                                 </Col>
                             </Row>
                             <Row className="form-group">
